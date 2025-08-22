@@ -30,6 +30,8 @@ module Rsync
       "35" => "Timeout waiting for daemon connection"
     }
 
+    attr_reader :raw
+
     # @!visibility private
     def initialize(raw, exitcode)
       @raw = raw
