@@ -47,7 +47,8 @@ module Rsync
         [:checksum, :size, :timestamp, :permissions, :owner, :group, :acl].each do |prop|
           changes << prop if send(prop) == :changed
         end
-        changes.join(", ")
+        return changes.join(", ") unless changes.empty?
+        return "creating local" if @data[2,9] == "+++++++++"
       end
     end
 
